@@ -39,24 +39,24 @@ def login():
     """Valid: follows /auth parent path"""
     return jsonify({"token": "xxx"})
 
-@app.route('/api/v4/health/status')
+@app.route('/api/v3/health/status')
 def health_check():
     """Valid: follows /health parent path"""
     return jsonify({"status": "healthy"})
 
 # ❌ INVALID ENDPOINTS - These will fail validation
 
-@app.route('/users/users/profile')
+@app.route('/api/v1/users/users/profile')
 def user_profile():
     """Invalid: doesn't follow any allowed parent path"""
     return jsonify({"profile": {}})
 
-@app.route('/users/test/endpoint')
+@app.route('/api/v1/users/test/endpoint')
 def test_endpoint():
     """Invalid: test endpoints should not exist in production"""
     return jsonify({"test": True})
 
-@app.route('/users/debug/logs')
+@app.route('/api/v2/users/debug/logs')
 def debug_logs():
     """Invalid: debug endpoints should not exist in production"""
     return jsonify({"logs": []})
