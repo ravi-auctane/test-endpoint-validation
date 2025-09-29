@@ -61,12 +61,12 @@ def debug_logs():
     """Invalid: debug endpoints should not exist in production"""
     return jsonify({"logs": []})
 
-@app.route('/api/v4/users/temp/data')  # /temp is not allowed
+@app.route('/api/v2/users/temp/data')  # /temp is not allowed
 def temp_data():
     """Invalid: temporary endpoints should not exist"""
     return jsonify({"temp": []})
 
-@app.route('/api/v4/users/random/path/to/endpoint')  # Completely non-standard path
+@app.route('/api/v2/users/random/path/to/endpoint')  # Completely non-standard path
 def random_endpoint():
     """Invalid: doesn't follow any convention"""
     return jsonify({"random": True})
