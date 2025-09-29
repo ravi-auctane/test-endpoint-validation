@@ -39,34 +39,34 @@ def login():
     """Valid: follows /auth parent path"""
     return jsonify({"token": "xxx"})
 
-@app.route('/api/v1/health/status')
+@app.route('/api/v3/health/status')
 def health_check():
     """Valid: follows /health parent path"""
     return jsonify({"status": "healthy"})
 
 # ❌ INVALID ENDPOINTS - These will fail validation
 
-@app.route('/api/v1/users/users/profile')  # Missing /api/v1 or /api/v2 prefix
+@app.route('/api/v1/users/users/profile')
 def user_profile():
     """Invalid: doesn't follow any allowed parent path"""
     return jsonify({"profile": {}})
 
-@app.route('/api/v1/users/test/endpoint')  # /test is not an allowed parent path
+@app.route('/api/v1/users/test/endpoint')
 def test_endpoint():
     """Invalid: test endpoints should not exist in production"""
     return jsonify({"test": True})
 
-@app.route('/api/v1/users/debug/logs')  # /debug is not allowed
+@app.route('/api/v2/users/debug/logs')
 def debug_logs():
     """Invalid: debug endpoints should not exist in production"""
     return jsonify({"logs": []})
 
-@app.route('/api/v2/users/temp/data')  # /temp is not allowed
+@app.route('/api/v2/users/temp/data')
 def temp_data():
     """Invalid: temporary endpoints should not exist"""
     return jsonify({"temp": []})
 
-@app.route('/api/v2/users/random/path/to/endpoint')  # Completely non-standard path
+@app.route('/api/v2/users/random/path/to/endpoint')
 def random_endpoint():
     """Invalid: doesn't follow any convention"""
     return jsonify({"random": True})
