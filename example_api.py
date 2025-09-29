@@ -39,7 +39,7 @@ def login():
     """Valid: follows /auth parent path"""
     return jsonify({"token": "xxx"})
 
-@app.route('/api/v1/health/status')
+@app.route('/api/v4/health/status')
 def health_check():
     """Valid: follows /health parent path"""
     return jsonify({"status": "healthy"})
